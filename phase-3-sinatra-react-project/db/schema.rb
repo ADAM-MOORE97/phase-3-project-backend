@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_11_15_150111) do
 
   create_table "items", force: :cascade do |t|
-    t.string "type"
+    t.string "item_type"
     t.string "name"
     t.integer "cost"
   end
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_150111) do
     t.integer "current_value"
   end
 
-  create_table "persons", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.integer "phone_number"
