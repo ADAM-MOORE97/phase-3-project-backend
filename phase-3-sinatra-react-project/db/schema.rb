@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_150111) do
+ActiveRecord::Schema.define(version: 2021_11_15_201008) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_type"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_150111) do
     t.datetime "created_by"
     t.datetime "updated_by"
     t.integer "current_value"
+    t.integer "term"
+    t.float "interest_rate"
   end
 
   create_table "people", force: :cascade do |t|
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_150111) do
     t.string "email"
     t.date "DOB"
     t.string "gender"
+    t.string "username"
+    t.string "password"
   end
 
 end
