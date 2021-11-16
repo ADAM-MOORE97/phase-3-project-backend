@@ -42,7 +42,25 @@ class ApplicationController < Sinatra::Base
     # return the new post
     new_user.to_json
 end
+patch '/people/:id' do
+  # Pass the request into the custom getBody function
+  update_user = Person.find(params[:id])
  
+  # create the new post
+  update_user.update(first_name: params[:first_name],
+                last_name: params[:last_name],
+                phone_number: params[:phone_number],
+                address: params[:address],
+                email: params[:email],
+                DOB: params[:DOB],
+                gender: params[:gender],
+                username: params[:username],
+                password: params[:password])
+  # push the new post into the array
+  
+  # return the new post
+  update_user.to_json
+end
 
 end
 
