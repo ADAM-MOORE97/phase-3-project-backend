@@ -26,21 +26,21 @@ class ApplicationController < Sinatra::Base
   end
   post '/people' do
     # Pass the request into the custom getBody function
-    body = getBody(request)
+   
     # create the new post
-    new_user = {first_name: body["first_name"],
-                  last_name: body["last_name"],
-                  phone_number: body["phone_number"],
-                  address: body["address"],
-                  email: body["email"],
-                  DOB: body["DOB"],
-                  gender: body["gender"],
-                  username: body["username"],
-                  password: body["password"]}
+    new_user = Person.create(first_name: params[:first_name],
+                  last_name: params[:last_name],
+                  phone_number: params[:phone_number],
+                  address: params[:address],
+                  email: params[:email],
+                  DOB: params[:DOB],
+                  gender: params[:gender],
+                  username: params[:username],
+                  password: params[:password])
     # push the new post into the array
-    Person.all.push(new_user)
+    
     # return the new post
-    return new_user.to_json
+    new_user.to_json
 end
  
 
