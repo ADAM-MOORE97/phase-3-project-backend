@@ -24,6 +24,10 @@ class ApplicationController < Sinatra::Base
     person = Person.find(params[:id])
     person.loans.to_json(include: :item)
   end
+  get '/loans/:id' do
+    loan= Loan.find(params[:id])
+    loan.to_json
+  end
   post '/people' do
     # Pass the request into the custom getBody function
    
@@ -60,6 +64,13 @@ patch '/people/:id' do
   
   # return the new post
   update_user.to_json
+end
+patch '/loans/:id' do
+  update_loan = Loan.find(params[:id])
+ 
+  update_loan.update(current_value: params[:current_value])
+  
+  update_loan.to_json
 end
 
 end
