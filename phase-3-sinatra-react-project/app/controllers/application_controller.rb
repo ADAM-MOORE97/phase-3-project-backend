@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  use Rack::MethodOverride
   set :default_content_type, 'application/json'
   
   def getBody (req)
@@ -81,6 +82,7 @@ post '/loans' do
   new_loan.to_json
 end
 
+end
 end
 
 # test commit
