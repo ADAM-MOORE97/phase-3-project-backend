@@ -24,10 +24,10 @@ class ApplicationController < Sinatra::Base
     person = Person.find(params[:id])
     person.loans.to_json(include: :item)
   end
-  get '/loans/:id' do
-    loan= Loan.find(params[:id])
-    loan.to_json
-  end
+  # get '/loans/:id' do
+  #   loan= Loan.find(params[:id])
+  #   loan.to_json
+  # end
   post '/people' do
     # Pass the request into the custom getBody function
    
@@ -71,6 +71,14 @@ patch '/loans/:id' do
   update_loan.update(current_value: params[:current_value])
   
   update_loan.to_json
+end
+post '/items' do
+    new_item = Item.create(item_type: params[:item_type], name: params[:name], cost: params[:cost])
+    new_item.to_json
+end
+post '/loans' do 
+  new_loan = Loan.create(person_id: params[:person_id], item_id: params[:item_id], term: params[:term], current_value: params[:cost], interest_rate: params[:interest_rate])
+  new_loan.to_json
 end
 
 end
