@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  use Rack::MethodOverride
   set :default_content_type, 'application/json'
   
   def getBody (req)
@@ -72,7 +73,11 @@ patch '/loans/:id' do
   
   update_loan.to_json
 end
+delete 'loans/:id' do
+  loan = Loan.find(params[:id])
+  loan.destroy
 
+end
 end
 
 # test commit
