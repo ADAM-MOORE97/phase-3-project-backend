@@ -82,6 +82,11 @@ post '/loans' do
   new_loan.to_json
 end
 
+
+delete '/loans/:id' do
+  loan = Loan.find(params[:id])
+  loan.destroy
+  loan.to_json
 end
 end
 
