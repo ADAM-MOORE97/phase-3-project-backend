@@ -79,14 +79,16 @@ post '/items' do
 end
 post '/loans' do 
   new_loan = Loan.create(person_id: params[:person_id], item_id: params[:item_id], term: params[:term], current_value: params[:cost], interest_rate: params[:interest_rate])
-  new_loan.to_json
+  person = Person.find(params[:person_id])
+  person.loans.to_json(include: :item)
 end
 
 
 delete '/loans/:id' do
   loan = Loan.find(params[:id])
+  person = Person.find(loan.person_id)
   loan.destroy
-  loan.to_json
+  person.loans.to_json(include: :item)
 end
 end
 
